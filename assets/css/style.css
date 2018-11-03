@@ -1,0 +1,37 @@
+body {
+   background:white;
+   font-family: 'Merriweather', serif;
+
+}
+
+header {
+    font-size: 40px;
+    text-align: center;
+    padding: 20px;
+    background-color: green;
+}
+
+h3, {
+    margin-left: 110px;
+   
+}
+
+h2 {
+    text-align: center;
+}
+#myform {
+    text-align: center;
+}
+
+/* #root {
+    margin-left: 100px;
+} */
+
+#mylabel {
+    font-size: 20px;
+}
+
+#start-game {
+    margin: 0 auto;
+    display: block;
+}
