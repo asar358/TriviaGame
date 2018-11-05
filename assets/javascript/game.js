@@ -1,6 +1,6 @@
 
 
-var questions = [
+var questionsArray = [
     {
         question: "Entomology is the science that studies",
         answers: ["Behavior of human beings", "Insects", "The origin and history of technical and scientific terms", "The formation of rocks"],
@@ -30,42 +30,84 @@ var questions = [
 
 var currentQuestion = 0;
 
-var correctAns = [];
-var wrongAns = [];
+var correctAns = 0;
+var wrongAns = 0;
 
 $(document).ready(function () {
     $("#start-game").click(function () {
         startGame();
     })
     function startGame() {
-        $('#question').text(questions[0].question);
+        $('#question').text(questionsArray[0].question);
         renderQuestions(0);
     }
     function renderQuestions(i) {
-        for (let i = 0; i < questions[0].answers.length; i++) {
-            var answer = questions[0].answers[i];
+        for (let i = 0; i < questionsArray[0].answers.length; i++) {
+            var answer = questionsArray[0].answers[i];
             var answerId = i + 1;
             $(`#btn${answerId}-container`).html(`<button id="btn${answerId}">${answer}</button>`);
         }
+        // for(var j = 0; j < questionsArray[0].question.length; j++) {
+        //     var questions = questionsArray[0].question[j];
+        //     var questionId = j + 1;
+        // }
+        
     }
+    
     $('#btn-container').on('click', 'button', function () {
         event.preventDefault();
         var answerText = $(this).text();
         answerCheck(answerText);
     })
     function answerCheck(answer) {
-        if (questions[currentQuestion].correctAnswer === answer) {
+        if (questionsArray[currentQuestion].correctAnswer === answer) {
             alert("win");
-            
-           
+            correctAns++
+            $('#win-counter').text(correctAns);
+            nextQuestion();
         }
         else {
+            wrongAns++
             alert("lose")
         }
+            $('#loss-counter').text(wrongAns);
+       nextQuestion();
     }
+    function nextQuestion(i) {
+        for (let i = 0; i < questionsArray[0].answers.length; i++) {
+            var answer = questionsArray[0].answers[i];
+            var answerId = i + 1;
+            $(`#btn${answerId}-container`).html(`<button id="btn${answerId}">${answer}</button>`);
+        }
+        for(var j = 0; j < questionsArray[0].question.length; j++) {
+            var questions = questionsArray[0].question[j];
+            var questionId = j + 1;
+            $('#qts').text(questionId);
+        }
+        
     
+           
+        }
     
-    // function setQuestion() {
+
+    
+
+
+   
+});
+
+
+
+
+
+
+
+// for (var i = 0; i < questions.length; i++) {
+
+//   };
+
+
+ // function setQuestion() {
     //     $('#question').text(questions[0][0]);
     //     $('#btn1').text(questions[i][1]);
     //     $('#btn2').text(questions[i][2]);
@@ -80,24 +122,6 @@ $(document).ready(function () {
     //     });
     // }
     // nextQuestion();
-
-
-});
-
-
-
-
-
-
-
-// for (var i = 0; i < questions.length; i++) {
-
-//   };
-
-
-
-
-
 
 
 
